@@ -1,0 +1,25 @@
+version: "3"
+services:
+  2pdf_1:
+    container_name: 2pdf_1
+    restart: always
+    build:
+      context: .
+  2pdf_2:
+    container_name: 2pdf_2
+    restart: always
+    build:
+      context: .
+  2pdf_3:
+    container_name: 2pdf_3
+    restart: always
+    build:
+      context: .
+  balancer:
+    container_name: 2pdf_balancer
+    restart: always
+    image: "nginx:1.21.3-alpine"
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
